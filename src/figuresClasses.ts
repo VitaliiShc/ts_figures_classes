@@ -4,6 +4,7 @@ type Color = 'red' | 'green' | 'blue';
 export interface Figure {
   shape: Shape;
   color: Color;
+  getArea: Function;
 }
 
 export class Triangle implements Figure {
@@ -83,7 +84,6 @@ export class Rectangle implements Figure {
   }
 }
 
-export function getInfo(figure: object): string {
-  // return typeof figure;
+export function getInfo(figure: Figure): string {
   return `A ${figure.color} ${figure.shape} - ${figure.getArea()}`;
 }
