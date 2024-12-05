@@ -4,7 +4,7 @@ type Color = 'red' | 'green' | 'blue';
 export interface Figure {
   shape: Shape;
   color: Color;
-  getArea: Function;
+  getArea: () => number;
 }
 
 export class Triangle implements Figure {
@@ -15,11 +15,11 @@ export class Triangle implements Figure {
     public c: number,
   ) {
     if (a <= 0 || b <= 0 || c <= 0) {
-      throw new Error(`the side can't be less than or equal to 0`);
+      throw new Error(`Side lengths must be greater than 0`);
     }
 
     if (a >= b + c || b >= a + c || c >= a + b) {
-      throw new Error(`sides 1, 2 and 3 can't form a triangle`);
+      throw new Error(`The provided side lengths do not form a valid triangle`);
     }
   }
 
@@ -47,7 +47,7 @@ export class Circle implements Figure {
     public radius: number,
   ) {
     if (radius <= 0) {
-      throw new Error(`the radius can't be less than or equal to 0`);
+      throw new Error(`Radius must be greater than 0`);
     }
   }
 
@@ -68,7 +68,7 @@ export class Rectangle implements Figure {
     public height: number,
   ) {
     if (width <= 0 || height <= 0) {
-      throw new Error(`the side can't be less than or equal to 0`);
+      throw new Error(`Side lengths must be greater than 0`);
     }
   }
 
